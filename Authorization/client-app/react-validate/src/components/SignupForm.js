@@ -65,6 +65,8 @@ function SignUpForm() {
     const [isRegister, setIsRegister] = useState(false);
 
     const onSubmit = (values, submitProps) => {
+        // console.log('Form data', values)
+        // console.log('submitProps', submitProps)
         submitProps.setSubmitting(false)
         submitProps.resetForm({
             values: {
@@ -89,6 +91,7 @@ function SignUpForm() {
         }
 
         userService.register(user).then(function (isOk) {
+            console.log("IS OK; ", isOk)
             setIsRegister(isOk);
         });
     }

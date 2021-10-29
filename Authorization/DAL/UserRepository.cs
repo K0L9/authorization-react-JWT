@@ -84,10 +84,5 @@ namespace Authorization.DAL
             _db.SaveChanges();
             return editedUser;
         }
-
-        public User GetUserById(int id)
-        {
-            return _db.Users.FirstOrDefault(x => x.Id == id);
-        }
     }
 }

@@ -12,6 +12,5 @@ namespace Authorization.DAL
         User CheckPassword(string email, string password);
         void DeleteUser(string email);
         User EditUser(User user);
-        User GetUserById(int id);
     }
 }

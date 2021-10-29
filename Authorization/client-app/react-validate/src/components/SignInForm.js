@@ -49,7 +49,6 @@ function SignInForm() {
     const [formValues, setFormValues] = useState(null)
     const [value, onChange] = useState(new Date());
     const [isLogin, setIsLogin] = useState(false);
-    const [currUser, setCurrUser] = useState({});
 
 
     const onSubmit = (values, submitProps) => {
@@ -69,30 +68,7 @@ function SignInForm() {
 
         userService.login(data).then(function (isOk) {
             setIsLogin(isOk)
-            if (isOk === true) {
-                userService.getUserData().then(user => {
-                    setCurrUser(user);
-                });
-            }
         })
-    }
-
-    const logout = () => {
-        userService.logout();
-        setIsLogin(false);
-    }
-
-    if (isLogin === true) {
-        return (
-            <div>
-                <h2>You are user</h2>
-                <h3>{currUser.name} {currUser.surname}</h3>
-                <h4>{currUser.email}</h4>
-                <h4>{currUser.phone}</h4>
-                <h4>{currUser.birthdayDate}</h4>
-                <button onClick={logout}>LOGOUT</button>
-            </div>
-        )
     }
 
     return (
@@ -116,6 +92,10 @@ function SignInForm() {
                         <ErrorMessage name='password'>
                             {error => <div className='error'>{error}</div>}
                         </ErrorMessage>
+
+                        {isLogin === true &&
+                            <h3> LOGIN IS SUCCESS </h3>
+                        }
 
                         <button
                             type='submit'
